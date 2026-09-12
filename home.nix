@@ -4,6 +4,7 @@
   imports = [
     ./modules/waybar.nix
     ./modules/zsh.nix
+    ./modules/noctalia.nix
   ];
 
   home.username = "karjallo";

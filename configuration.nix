@@ -70,11 +70,13 @@
   pulse.enable = true;
   };
 
-  # Asegurar los drivers de video adecuados
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
+
+  # bluetooth
+  hardware.bluetooth.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
