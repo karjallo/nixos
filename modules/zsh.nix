@@ -11,6 +11,8 @@
             ls = "ls --color=auto";
             grep = "grep --color=auto";
             wget = ''wget --hsts-file="$XDG_STATE_HOME/wget-hsts"'';
+            nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos#nixos";
+            nrb = "sudo nixos-rebuild build --flake ~/.config/nixos#nixos";
         };
 
         initContent = ''

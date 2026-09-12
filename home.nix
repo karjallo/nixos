@@ -2,8 +2,8 @@
 {
 
   imports = [
-    ./waybar.nix
-    ./zsh.nix
+    ./modules/waybar.nix
+    ./modules/zsh.nix
   ];
 
   home.username = "karjallo";
@@ -35,6 +35,7 @@
     yazi
     btop
     fastfetch
+    tree
     # launcher
     dmenu
     rofi

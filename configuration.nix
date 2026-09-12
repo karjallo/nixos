@@ -8,14 +8,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
 
 
   # home-manager
-  home-manager.users."karjallo" = import /home/karjallo/.config/nixos/home.nix;
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  # home-manager.users."karjallo" = import /home/karjallo/.config/nixos/home.nix;
+  # home-manager.useGlobalPkgs = true;
+  # home-manager.useUserPackages = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
