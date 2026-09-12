@@ -5,6 +5,7 @@
     ./modules/waybar.nix
     ./modules/zsh.nix
     ./modules/noctalia.nix
+    ./modules/dotfiles.nix
   ];
 
   home.username = "karjallo";

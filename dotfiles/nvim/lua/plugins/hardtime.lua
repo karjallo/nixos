@@ -1,0 +1,36 @@
+return {
+    "m4xshen/hardtime.nvim",
+    -- lazy = false,
+    event = "VeryLazy",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+        max_count = 4,
+        max_time = 1500,
+        showmode = false,
+        hint = true,
+        timeout = 5000,
+        restricted_keys = {
+            ["h"] = { "n", "x" },
+            ["j"] = { "n", "x" },
+            ["k"] = { "n", "x" },
+            ["l"] = { "n", "x" },
+            ["-"] = { "n", "x" },
+            ["+"] = { "n", "x" },
+            ["gj"] = { "n", "x" },
+            ["gk"] = { "n", "x" },
+            ["<CR>"] = { "n", "x" },
+            ["<C-M>"] = { "n", "x" },
+            ["<C-N>"] = { "n", "x" },
+            ["<C-P>"] = { "n", "x" },
+        },
+        disabled_keys = {
+            ["<Up>"] = { "n", "i", "x" },
+            ["<Down>"] = { "n", "i", "x" },
+            ["<Left>"] = { "n", "i", "x" },
+            ["<Right>"] = { "n", "i", "x" },
+        },
+        disabled_filetypes = {
+            "qf", "netrw", "NvimTree", "lazy", "mason", "oil",
+        },
+    },
+}

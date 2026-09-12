@@ -1,0 +1,47 @@
+╔══════════════════════════════════════════════════════╗
+║                  MOTION CHEATSHEET                   ║
+╚══════════════════════════════════════════════════════╝
+
+━━━ NAVEGACIÓN FLASH ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  <leader>s    saltar a cualquier parte de la pantalla
+  S            saltar a nodo treesitter
+  r            remote flash (operator)
+  R            buscar nodo treesitter (operator/visual)
+  <C-s>        toggle flash en búsqueda /
+
+━━━ NAVEGACIÓN NATIVA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  C-d / C-u    bajar / subir media página (centrado)
+  { / }        párrafo anterior / siguiente
+  gg / G       inicio / fin del archivo
+  0 / ^ / $    inicio línea / primer char / fin línea
+  w / b / e    siguiente / anterior / fin de palabra
+  f / t        buscar carácter en línea
+  %            saltar al par de bracket/paren
+
+━━━ TEXT OBJECTS — MINI.AI ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  af / if      around / inside función
+  ac / ic      around / inside clase
+  aa / ia      around / inside argumento
+  at / it      around / inside tag HTML
+  an / in      next text object
+  al / il      last text object
+
+━━━ SURROUNDINGS — MINI.SURROUND ━━━━━━━━━━━━━━━━━━━━━
+  sa           agregar  — ej: saiw" agrega comillas
+  sd           eliminar — ej: sd"
+  sr           reemplazar — ej: sr"'
+  sf / sF      buscar surrounding derecha / izquierda
+  sh           resaltar surrounding
+
+━━━ OPERADORES COMUNES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  d / c / y    delete / change / yank + motion
+  diw / ciw    delete / change inner word
+  daf / cif    delete / change función completa
+  yaf          copiar función completa
+  .            repetir última acción
+
+━━━ PANES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  C-h/j/k/l   moverse entre panes
+  <leader>sv   split vertical
+  <leader>sh   split horizontal
+  <leader>q    cerrar pane
