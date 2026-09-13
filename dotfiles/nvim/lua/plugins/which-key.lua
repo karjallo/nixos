@@ -18,7 +18,7 @@ return {
             { "<leader>4", hidden = true },
 
             -- También puedes agrupar tus otros plugins para que se vea ordenado
-            { "<leader>f", group = "Files (Telescope)" },
+            { "<leader>f", group = "Find (Telescope)" },
             { "<leader>g", group = "Git" },
             { "<leader>h", group = "Harpoon menu" },
             { "<leader>t", group = "Toggle Terminal" },

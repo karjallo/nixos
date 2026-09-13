@@ -5,7 +5,10 @@
 -- Leader keys
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
+-- undo file
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
+--
 vim.opt.title = true
 -- Opciones básicas
 vim.opt.number = true

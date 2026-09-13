@@ -10,6 +10,8 @@ return
         {'<leader>fb', '<CMD>Telescope buffers<CR>',    desc = 'Buffers'},
         {'<leader>fk', '<CMD>Telescope keymaps<CR>',    desc = 'Keymaps'},
         {'<leader>fg', '<CMD>Telescope git_files<CR>',  desc = 'Git files'},
+        {'<leader>fs', '<CMD>Telescope lsp_document_symbols<CR>', desc = 'Document symbols' },
+        {'<leader>fS', '<CMD>Telescope lsp_dynamic_workspace_symbols<CR>', desc = 'Workspace symbols' },
     },
     config = function()
         local actions = require('telescope.actions')
