@@ -16,6 +16,11 @@
   "$HOME/.config/scripts/bin/"
   ];
 
+  home.sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+  };
+
   home.packages = with pkgs; [
     # fonts - cursors
     nerd-fonts.iosevka
