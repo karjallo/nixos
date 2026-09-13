@@ -13,12 +13,22 @@ return
     },
     config = function()
         local actions = require('telescope.actions')
+        local action_state = require("telescope.actions.state")
+
+        local function create_file(prompt_bufnr)
+            local prompt = action_state.get_current_line()
+            actions.close(prompt_bufnr)
+            vim.cmd('edit ' .. prompt)
+        end
+
         require('telescope').setup({
             defaults = {
                 mappings = {
                     i = {
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-e>"] = create_file,
+
                     }
                 },
             }

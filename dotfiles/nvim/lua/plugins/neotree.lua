@@ -8,8 +8,12 @@ return {
             "nvim-tree/nvim-web-devicons", -- optional, but recommended
         },
         lazy = false, -- neo-tree will lazily load itself
+        init = function() end,
 
         opts = {
+            filesystem = {
+                hijack_netrw_behavior = "disabled",
+            },
             window = {
                 mappings = {
 

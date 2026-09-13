@@ -96,6 +96,7 @@
             pyright
             emmet-ls
             intelephense
+            phpstan
 
             ];
 

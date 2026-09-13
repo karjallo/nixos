@@ -17,11 +17,12 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
+-- evitar warning por hl en configs
+---@diagnostic disable: undefined-global
 
 ------------------
 ---- MONITORS ----
 ------------------
-
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
     output   = "",
@@ -283,6 +284,9 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 -- fullscreen que conserva waybar, gaps
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+
+-- toggle bar
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("noctalia msg bar-toggle"))
 
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))

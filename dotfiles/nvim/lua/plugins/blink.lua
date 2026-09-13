@@ -21,6 +21,9 @@ return {
             ["<C-space>"] = { "show" },
             ["<C-Down>"] = {"scroll_documentation_down"},
             ["<C-Up>"] = {"scroll_documentation_up"},
+            -- siguiente/prev placeholder
+            ["<Tab>"] = { "snippet_forward", "fallback" },
+            ["<S-Tab>"] = { "snippet_backward", "fallback" },
         },
         cmdline = {
             keymap = {

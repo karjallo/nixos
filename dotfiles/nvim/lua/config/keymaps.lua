@@ -2,6 +2,21 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- notificaciones
+-- vim.keymap.set('n', '<leader>n', function()
+--     Snacks.notifier.show_history()
+-- end, { desc = 'Historial de notificaciones' })
+vim.keymap.set('n', '<leader>n', function()
+    if Snacks.config.picker and Snacks.config.picker.enabled then
+        Snacks.picker.notifications()
+    else
+        Snacks.notifier.show_history()
+    end
+end, { desc = 'Historial de notificaciones' })
+
+-- cambiar J
+vim.keymap.set('n', 'J', '<Nop>', { desc = 'Deshabilitado (evitar joins accidentales)' })
+vim.keymap.set('n', '<leader>J', 'J', { desc = 'Unir línea con la siguiente' })
 -- mini.surround conflict
 -- vim.keymap.set("n", "s", "cl", { noremap = true })
 -- Oil.nvim
@@ -16,20 +31,21 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Error siguiente" }
 -- saltar y centrar
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
 -- Navegar entre panes con Ctrl-hjkl
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
-vim.keymap.set('n', '<C-q>', '<C-w>q')
+vim.keymap.set('n', '<C-q>', '<C-w>c')
 vim.keymap.set('n', '<leader>pv', ':vsp<CR>', { desc = 'Split vertical' })
 vim.keymap.set('n', '<leader>ph', ':sp<CR>', { desc = 'Split horizontal' })
-
--- Tabs
-vim.keymap.set('n', '<leader>to', ':tabnew<CR>', {desc = 'Open new tab'})
-vim.keymap.set('n', '<leader>tq', ':tabclose<CR>', {desc = 'Close current tab'})
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', {desc = 'Next tab'})
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', {desc = 'Previous tab'})
+-- Navegación entre buffers
+vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Siguiente buffer' })
+vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Buffer anterior' })
+vim.keymap.set('n', '<leader>bq', ':bdelete<CR>', { desc = 'Cerrar buffer actual' })
+vim.keymap.set('n', '<leader>bu', '<cmd>e#<CR>', { desc = 'Reabrir buffer anterior' })
+vim.keymap.set('n', '<leader>bo', '<cmd>enew<CR>', { desc = 'Nuevo buffer vacío' })
 
 -- escape hace :noh en normal mode, borrando search highlighting
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

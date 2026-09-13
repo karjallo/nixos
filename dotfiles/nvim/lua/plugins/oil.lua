@@ -1,7 +1,9 @@
 return {
     'stevearc/oil.nvim',
     event = "VeryLazy",
+
     opts = {
+        default_file_explorer = true,
         delete_to_trash = true,
         skip_confirm_for_simple_edits = true,
         prompt_save_on_select_new_entry = true,
