@@ -11,6 +11,7 @@
       # <home-manager/nixos>
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes"];
 
   # home-manager
   # home-manager.users."karjallo" = import /home/karjallo/.config/nixos/home.nix;
