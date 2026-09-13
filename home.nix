@@ -65,6 +65,7 @@
             cargo
             rustc
             python3
+            php
 # display
             nwg-displays
 # misc - tools
@@ -94,6 +95,7 @@
             lua-language-server
             pyright
             emmet-ls
+            intelephense
 
             ];
 

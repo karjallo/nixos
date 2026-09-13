@@ -5,6 +5,7 @@ return {
         local lint = require("lint")
 
         lint.linters_by_ft = {
+            php = {"phpstan"},
             python = { "pylint" },
             javascript = { "eslint" },
             typescript = { "eslint" },

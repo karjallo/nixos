@@ -6,6 +6,9 @@ return {
             -- blink.cmp detecta de forma automática las capacidades, no necesitas nvim-cmp
         })
 
+        -- PHP
+        vim.lsp.config('intelephense', {})
+
         -- Python
         vim.lsp.config('pyright', {})
 
@@ -25,13 +28,13 @@ return {
         vim.lsp.config('emmet_language_server', {
             -- SOLUCIÓN: Forzamos a lspconfig a usar el binario 'emmet-ls' que instalaste por npm
             cmd = { "emmet-ls", "--stdio" },
-            filetypes = { "html", "css", "javascript", "javascriptreact", "typescriptreact" },
+            filetypes = { "php", "html", "css", "javascript", "javascriptreact", "typescriptreact" },
             init_options = {
                 showSuggestionsAsSnippets = true, -- esto es la clave
             },
         })
 
         -- Habilitar todos los servidores
-        vim.lsp.enable({ 'pyright', 'clangd', 'lua_ls', 'emmet_language_server' })
+        vim.lsp.enable({ 'intelephense', 'pyright', 'clangd', 'lua_ls', 'emmet_language_server' })
     end,
 }
