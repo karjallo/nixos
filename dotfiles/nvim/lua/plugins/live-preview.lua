@@ -6,10 +6,6 @@ return {
     },
     config = function()
         require("livepreview").setup({
-            commands = {
-                start = "LivePreview",
-                stop = "StopPreview",
-            },
             port = 5500,
             browser = "surf", -- o "chromium", "brave", etc.
         })

@@ -40,6 +40,7 @@
             font-awesome           # Muy usado para íconos de interfaz de usuario
 # symbola
 # browsers
+            surf
             firefox-bin
             qutebrowser
             vimb
