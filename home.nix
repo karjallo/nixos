@@ -6,6 +6,7 @@
     ./modules/zsh.nix
     ./modules/noctalia.nix
     ./modules/dotfiles.nix
+    ./modules/flatpak.nix
   ];
 
   home.username = "karjallo";

@@ -56,6 +56,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # ia local
   services.ollama = {
     enable = true;
     package = pkgs.ollama-rocm;
@@ -63,11 +64,21 @@
       HSA_OVERRIDE_GFX_VERSION = "10.3.0"; # Forzar soporte ROCm para RX 6600 (RDNA 2)
     };
   };
+
   services.pipewire = {
   enable = true;
   alsa.enable = true;
   alsa.support32Bit = true;
   pulse.enable = true;
+  };
+
+  services.flatpak = {
+      enable = true;
+  };
+
+  xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk];
   };
 
   hardware.graphics = {
