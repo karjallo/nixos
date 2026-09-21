@@ -34,6 +34,9 @@ return {
             sources = { "cmdline" },
         },
         sources = {
+            per_filetype = {
+                codecompanion = { "codecompanion" },
+            },
             default = { "lsp", "path", "snippets", "buffer" },
         },
         completion = {

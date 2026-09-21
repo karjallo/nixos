@@ -39,6 +39,13 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+# net-sharing
+    networking.firewall = {
+        enable = true;
+        allowedTCPPortRanges = [ { from = 1714; to =  1764; } ];
+        allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+    };
+
   # Set your time zone.
   time.timeZone = "America/Asuncion";
 

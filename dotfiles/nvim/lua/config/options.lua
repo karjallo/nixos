@@ -19,13 +19,14 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 200
 vim.opt.timeoutlen = 300
-
+-- splits
+vim.opt.splitright = true
 -- Configuración de límites y corte de línea
-vim.opt.wrap = true          -- Habilita el salto de línea visual
-vim.opt.linebreak = true     -- Evita que las palabras se corten a la mitad
-vim.opt.textwidth = 80       -- Corta físicamente al escribir (principalmente comentarios/markdown)
--- ESTA ES LA LÍNEA CRUCIAL PARA LAZYVIM:
-vim.opt.formatoptions:remove({ "t" }) -- Evita que LazyVim rompa el wrapping visual en ciertos archivos
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.textwidth = 80
+-- ESTA ES LA LÍNEA C
+vim.opt.formatoptions:remove({ "t" })
 
 -- Default global
 vim.opt.tabstop = 4
@@ -41,13 +42,13 @@ vim.g.loaded_ruby_provider = 0
 
 -- autocompletar sugerencias wilf menu
 vim.opt.wildmenu = true
-vim.opt.wildmode = "longest:full,full" -- primero completa lo común, luego cicla
+vim.opt.wildmode = "longest:full,full"
 
 -- visualizacion de panes
 vim.opt.fillchars = {
     vert = '│',
-    horiz = '─',    -- separador horizontal
-    horizup = '┴',  -- intersecciones
+    horiz = '─',
+    horizup = '┴',
     horizdown = '┬',
     vertleft = '┤',
     vertright = '├',

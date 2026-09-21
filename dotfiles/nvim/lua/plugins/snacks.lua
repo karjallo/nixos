@@ -12,9 +12,13 @@ return {
         },
         notifier = {
             enabled = true,
-            style = "compact",   -- "fancy" | "compact" | "minimal"
-            timeout = 5000,    -- duración en ms
-            top_down = true,  -- las notificaciones aparecen desde abajo
+            style = "compact",
+            timeout = 5000,
+            top_down = true,
+        },
+        picker = {
+            enabled = true,
+            ui_select = true,
         },
     },
 }

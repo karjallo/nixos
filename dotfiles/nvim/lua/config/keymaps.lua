@@ -3,31 +3,45 @@
 -- Add any additional keymaps here
 
 -- notificaciones
--- vim.keymap.set('n', '<leader>n', function()
---     Snacks.notifier.show_history()
--- end, { desc = 'Historial de notificaciones' })
 vim.keymap.set('n', '<leader>n', function()
-    if Snacks.config.picker and Snacks.config.picker.enabled then
-        Snacks.picker.notifications()
-    else
-        Snacks.notifier.show_history()
-    end
+    Snacks.notifier.show_history()
 end, { desc = 'Historial de notificaciones' })
+
+-- vim.keymap.set('n', '<leader>n', function()
+--     if Snacks.config.picker and Snacks.config.picker.enabled then
+--         Snacks.picker.notifications()
+--     else
+--         Snacks.notifier.show_history()
+--     end
+-- end, { desc = 'Historial de notificaciones' })
 
 -- cambiar J
 vim.keymap.set('n', 'J', '<Nop>', { desc = 'Deshabilitado (evitar joins accidentales)' })
 vim.keymap.set('n', '<leader>J', 'J', { desc = 'Unir línea con la siguiente' })
 -- mini.surround conflict
 -- vim.keymap.set("n", "s", "cl", { noremap = true })
+
 -- Oil.nvim
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
+
+-- -- Errores
+-- -- Ver el error actual en una ventana flotante
+-- vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = "Ver error flotante" })
+-- -- Ver todos los errores del archivo en una lista (Quickfix)
+-- vim.keymap.set('n', '<leader>dq', vim.diagnostic.setqflist, { desc = "Lista de diagnósticos" })
+-- -- Saltar al error anterior/siguiente
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Error anterior" })
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Error siguiente" })
+
+-- Errores
 -- Ver el error actual en una ventana flotante
-vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = "Ver error flotante" })
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = "Ver error flotante" })
 -- Ver todos los errores del archivo en una lista (Quickfix)
-vim.keymap.set('n', '<leader>dq', vim.diagnostic.setqflist, { desc = "Lista de diagnósticos" })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.setqflist, { desc = "Lista de diagnósticos" })
 -- Saltar al error anterior/siguiente
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Error anterior" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Error siguiente" })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Error anterior" })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Error siguiente" })
+
 -- saltar y centrar
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
@@ -37,9 +51,20 @@ vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
-vim.keymap.set('n', '<C-q>', '<C-w>c')
+-- abrir nuevos panes
 vim.keymap.set('n', '<leader>pv', ':vsp<CR>', { desc = 'Split vertical' })
 vim.keymap.set('n', '<leader>ph', ':sp<CR>', { desc = 'Split horizontal' })
+-- vim.keymap.set('n', '<C-q>', '<C-w>c')
+vim.keymap.set('n', '<C-q>', function()
+  if #vim.api.nvim_list_wins() > 1 then
+    vim.cmd('bdelete!')
+  else
+    print("Last pane!")
+  end
+end, { desc = "Cerrar buffer y pane actual" })
+
+
+
 -- Navegación entre buffers
 vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Siguiente buffer' })
 vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Buffer anterior' })

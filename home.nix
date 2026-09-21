@@ -50,6 +50,7 @@
             btop
             fastfetch
             tree
+            fzf
 # launcher
             dmenu
             rofi
@@ -105,5 +106,7 @@
         settings.user.name = "karjallo";
         settings.user.email = "karjallo@disroot.org";
     };
+
+    services.kdeconnect.enable = true;
 
 }

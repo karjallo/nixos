@@ -19,6 +19,9 @@
             };
             bar = {
                 default = {
+
+                    margin_ends = 10;
+                    # widgets
                     start = ["workspaces"];
                     center = [ ];
                     end = ["tray" "notifications" "clipboard" "volume" "clock" "control-center" "session"];
