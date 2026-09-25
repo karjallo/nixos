@@ -36,14 +36,17 @@
             nerd-fonts.victor-mono
             bibata-cursors
             noto-fonts
-            noto-fonts-color-emoji # Crucial para renderizar íconos y emojis correctamente
-            font-awesome           # Muy usado para íconos de interfaz de usuario
-# symbola
+            noto-fonts-color-emoji
+            font-awesome
 # browsers
             surf
             firefox-bin
             qutebrowser
             vimb
+# wine/games
+            wineWow64Packages.staging
+            winetricks
+            umu-launcher
 # terminal applications
             kitty
             yazi
@@ -69,10 +72,13 @@
             php
 # display
             nwg-displays
+# video
+            mpv
 # misc - tools
             killall
             hyprpaper
             wl-clipboard
+            unar
 # notificaciones
             libnotify
 # net
@@ -99,12 +105,27 @@
             intelephense
             phpstan
 
+# dependencias de obs
+            qt6.qtwayland
             ];
 
     programs.git = {
         enable = true;
         settings.user.name = "karjallo";
         settings.user.email = "karjallo@disroot.org";
+    };
+
+    programs.obs-studio = {
+        enable = true;
+
+        plugins = with pkgs.obs-studio-plugins; [
+            wlrobs
+                obs-backgroundremoval
+                obs-pipewire-audio-capture
+                obs-vaapi
+                obs-gstreamer
+                obs-vkcapture
+        ];
     };
 
     services.kdeconnect.enable = true;

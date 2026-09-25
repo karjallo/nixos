@@ -56,6 +56,7 @@ local menuFull    = "rofi -show run"
 -- Or execute your favorite apps at launch like this:
 hl.on("hyprland.start", function ()
     hl.exec_cmd("noctalia")
+    hl.exec_cmd("uwsm finalize")
     -- hl.exec_cmd("waybar")
     -- hl.exec_cmd("hyprpaper")
 end)
@@ -310,6 +311,7 @@ hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
 
 -- Mover/intercambiar ventana con mainMod + SHIFT + jklh
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. " + RETURN", hl.dsp.window.move({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
@@ -353,14 +355,33 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("noctalia msg media previous"),   { lo
 
 
 --------------------------------
+---- CUSTOM CONFIGS ----
+--------------------------------
+
+-- cuando focus Mod+hjkl, evitar cycling al finalizar direccion
+hl.config({
+    -- binds = {
+    --     movefocus_cycles_fullscreen = false,
+    --     window_direction_monitor_fallback = false,
+    -- },
+    general = {
+        no_focus_fallback = true,
+    },
+})
+
+
+
+--------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
--- Example window rules that are useful
 
+
+
+-- Example window rules that are useful
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",

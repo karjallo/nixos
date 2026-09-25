@@ -5,39 +5,39 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # <home-manager/nixos>
-    ];
+    imports =
+        [ # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+# <home-manager/nixos>
+        ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+    nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-  # home-manager
-  # home-manager.users."karjallo" = import /home/karjallo/.config/nixos/home.nix;
-  # home-manager.useGlobalPkgs = true;
-  # home-manager.useUserPackages = true;
+# home-manager
+# home-manager.users."karjallo" = import /home/karjallo/.config/nixos/home.nix;
+# home-manager.useGlobalPkgs = true;
+# home-manager.useUserPackages = true;
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+# Use the systemd-boot EFI boot loader.
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+# Use latest kernel.
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # hibernacion
-  powerManagement.enable = true;
-  boot.resumeDevice = "/dev/disk/by-uuid/c597f962-94cf-4d72-9fe4-cdd24304d42c";
+# hibernacion
+    powerManagement.enable = true;
+    boot.resumeDevice = "/dev/disk/by-uuid/c597f962-94cf-4d72-9fe4-cdd24304d42c";
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networking.hostName = "nixos"; # Define your hostname.
+# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+# Configure network proxy if necessary
+# networking.proxy.default = "http://user:password@proxy:port/";
+# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+# Enable networking
+        networking.networkmanager.enable = true;
 
 # net-sharing
     networking.firewall = {
@@ -46,134 +46,138 @@
         allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
     };
 
-  # Set your time zone.
-  time.timeZone = "America/Asuncion";
+# Set your time zone.
+    time.timeZone = "America/Asuncion";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+# Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # ia local
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-rocm;
-    environmentVariables = {
-      HSA_OVERRIDE_GFX_VERSION = "10.3.0"; # Forzar soporte ROCm para RX 6600 (RDNA 2)
+    i18n.extraLocaleSettings = {
+        LC_ADDRESS = "en_US.UTF-8";
+        LC_IDENTIFICATION = "en_US.UTF-8";
+        LC_MEASUREMENT = "en_US.UTF-8";
+        LC_MONETARY = "en_US.UTF-8";
+        LC_NAME = "en_US.UTF-8";
+        LC_NUMERIC = "en_US.UTF-8";
+        LC_PAPER = "en_US.UTF-8";
+        LC_TELEPHONE = "en_US.UTF-8";
+        LC_TIME = "en_US.UTF-8";
     };
-  };
 
-  services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  };
+# ia local
+    services.ollama = {
+        enable = true;
+        package = pkgs.ollama-rocm;
+        environmentVariables = {
+            HSA_OVERRIDE_GFX_VERSION = "10.3.0"; # Forzar soporte ROCm para RX 6600 (RDNA 2)
+        };
+    };
 
-  services.flatpak = {
-      enable = true;
-  };
+    services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+    };
 
-  xdg.portal = {
-      enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk];
-  };
+    services.flatpak = {
+        enable = true;
+    };
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+    xdg.portal = {
+        enable = true;
+        extraPortals = [
+            pkgs.xdg-desktop-portal-gtk
+                pkgs.xdg-desktop-portal-hyprland
+        ];
+        config.common.default = "*";
+    };
+    hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+    };
 
-  # bluetooth
-  hardware.bluetooth.enable = true;
+# bluetooth
+    hardware.bluetooth.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "altgr-intl";
-  };
+# Configure keymap in X11
+    services.xserver.xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+    };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."karjallo" = {
-    isNormalUser = true;
-    description = "karjallo";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ pulseaudio ];
-    shell = pkgs.zsh;
-  };
+# Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users."karjallo" = {
+        isNormalUser = true;
+        description = "karjallo";
+        extraGroups = [ "networkmanager" "wheel" ];
+        packages = with pkgs; [ pulseaudio ];
+        shell = pkgs.zsh;
+    };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+# Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-  ];
-  # wayland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+# List packages installed in system profile.
+# You can use https://search.nixos.org/ to find more packages (and options).
+    environment.systemPackages = with pkgs; [
+        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+            wget
+    ];
+# wayland
+    programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+        withUWSM = true;
+    };
 
-  # nix-ld
-  programs.nix-ld.enable = true;
+# nix-ld
+    programs.nix-ld.enable = true;
 
-  programs.zsh.enable = true;
+    programs.zsh.enable = true;
 
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+# Some programs need SUID wrappers, can be configured further or are
+# started in user sessions.
+# programs.mtr.enable = true;
+# programs.gnupg.agent = {
+#   enable = true;
+#   enableSSHSupport = true;
+# };
 
-  # List services that you want to enable:
+# List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+# Enable the OpenSSH daemon.
+# services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+# Open ports in the firewall.
+# networking.firewall.allowedTCPPorts = [ ... ];
+# networking.firewall.allowedUDPPorts = [ ... ];
+# Or disable the firewall altogether.
+# networking.firewall.enable = false;
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
+# Copy the NixOS configuration file and link it from the resulting system
+# (/run/current-system/configuration.nix). This is useful in case you
+# accidentally delete configuration.nix.
+# system.copySystemConfiguration = true;
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "26.05"; # Did you read the comment?
+# This option defines the first version of NixOS you have installed on this particular machine,
+# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+#
+# Most users should NEVER change this value after the initial install, for any reason,
+# even if you've upgraded your system to a new NixOS release.
+#
+# This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+# so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+# to actually do that.
+#
+# This value being lower than the current NixOS release does NOT mean your system is
+# out of date, out of support, or vulnerable.
+#
+# Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+# and migrated your data accordingly.
+#
+# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+    system.stateVersion = "26.05"; # Did you read the comment?
 
 }
