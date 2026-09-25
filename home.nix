@@ -7,6 +7,7 @@
         ./modules/noctalia.nix
         ./modules/dotfiles.nix
         ./modules/flatpak.nix
+        ./modules/rofi.nix
     ];
 
     home.username = "karjallo";
@@ -28,7 +29,7 @@
     };
 
     home.packages = with pkgs; [
-# fonts - cursors
+        # fonts - cursors
         nerd-fonts.iosevka
             nerd-fonts.iosevka-term
             nerd-fonts.fira-code
@@ -38,30 +39,31 @@
             noto-fonts
             noto-fonts-color-emoji
             font-awesome
-# browsers
+            # browsers
             surf
             firefox-bin
             qutebrowser
             vimb
-# wine/games
+            # wine/games
             wineWow64Packages.staging
             winetricks
             umu-launcher
-# terminal applications
+            # terminal applications
             kitty
             yazi
             btop
             fastfetch
             tree
             fzf
-# launcher
+            # launcher
             dmenu
-            rofi
-# IDE - text editor
+            # rofi tiene modulo aparte
+
+            # IDE - text editor
             neovim
             vscodium
             tree-sitter
-# build - develop
+            # build - develop
             jq
             gnumake
             gh
@@ -70,23 +72,23 @@
             rustc
             python3
             php
-# display
+            # display
             nwg-displays
-# video
+            # video
             mpv
-# misc - tools
+            # misc - tools
             killall
             hyprpaper
             wl-clipboard
             unar
-# notificaciones
+            # notificaciones
             libnotify
-# net
+            # net
             nethogs
-# screenshots
+            # screenshots
             grim
             slurp
-# dependencias de nvim
+            # dependencias de nvim
             ripgrep
             fd
             lazygit
@@ -105,7 +107,7 @@
             intelephense
             phpstan
 
-# dependencias de obs
+            # dependencias de obs
             qt6.qtwayland
             ];
 

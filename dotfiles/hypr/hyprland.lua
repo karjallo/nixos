@@ -296,8 +296,8 @@ hl.bind(mainMod .. " + T", hl.dsp.window.pseudo())
 
 -- Custom keybinds
 -- hl.bind(mainMod .. " + P",	hl.dsp.exec_cmd("dmenu_run"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(menuFull))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menuFull))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(menu))
 
 -- screenshots
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(screenshot))

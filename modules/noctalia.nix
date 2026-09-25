@@ -1,8 +1,13 @@
 # modules/noctalia.nix
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 {
     imports = [
         inputs.noctalia.homeModules.default
+    ];
+
+# dependencias
+    home.packages = [
+        pkgs.libqalculate
     ];
 
     programs.noctalia = {
