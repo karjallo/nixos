@@ -353,6 +353,9 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("noctalia msg media pause"), { locked 
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("noctalia msg media play"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("noctalia msg media previous"),   { locked = true })
 
+---  Custom keubindings ---
+-- abrir rofi-calc
+hl.bind(mainMod .. " + C",  hl.dsp.exec_cmd("rofi -show calc -modi calc"))
 
 --------------------------------
 ---- CUSTOM CONFIGS ----

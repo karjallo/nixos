@@ -1,16 +1,13 @@
 { config, pkgs, ... }:
 
 let
-    dotfiles = "${config.home.homeDirectory}/.config/nixos/dotfiles";
+  dotfiles = "${config.home.homeDirectory}/.config/nixos/dotfiles";
 in
 {
-	programs.rofi = {
-		enable = true;
-		plugins = with pkgs; [
-            rofi-calc
-		];
-	};
+  home.packages = [
+    (pkgs.rofi.override { plugins = [ pkgs.rofi-calc ]; })
+  ];
 
-    xdg.configFile."rofi".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/rofi";
+  xdg.configFile."rofi".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/rofi";
 }
