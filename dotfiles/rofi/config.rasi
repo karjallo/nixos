@@ -1,0 +1,15 @@
+configuration {
+    /* 1. Liberar los atajos por defecto de Rofi para evitar el conflicto */
+    kb-remove-char-back: "BackSpace";     /* Libera Control+h (originalmente borraba un carácter) */
+    kb-clear-line: "";                    /* Libera Control+l (originalmente limpiaba la línea) */
+    kb-remove-to-eol: "";                 /* Libera Control+k (originalmente borraba hasta el final) */
+    kb-mode-complete: "";                 /* Libera Control+l (completar modo) */
+
+    /* 2. Asignar los nuevos atajos estilo Vim */
+    kb-row-down: "Control+j,Down";
+    kb-row-up: "Control+k,Up";
+    kb-accept-entry: "Control+l,Return,KP_Enter";
+    kb-cancel: "Control+h,Escape";
+}
+
+@theme "theme"

@@ -1,0 +1,128 @@
+/*******************************************************************************
+ * ROFI Color Theme (Monokai Soda + Duckbones)
+ *******************************************************************************/
+
+* {
+    /* Paleta de colores extraída de tu configuración */
+    bg0:     #0E101AE6; /* Fondo principal con ligera transparencia (85%) */
+    bg1:     #1A1D2D;   /* Fondo de caja de búsqueda y elementos */
+    bg2:     #2B2F46;   /* Fondo alternativo / Borde inactivo */
+
+    fg0:     #C4C4B5;   /* Texto principal */
+    fg1:     #F6F6EC;   /* Texto resaltado */
+    fg-alt:  #615E4B;   /* Texto secundario / Apagado */
+
+    accent:  #9C64FE;   /* Borde activo / Color primario (Purple/Blue) */
+    select:  #F3005F;   /* Selección activa (Magenta/Red Monokai) */
+    active:  #97E023;   /* Verde */
+    cyan:    #57D1EA;   /* Cyan */
+
+    /* Variables globales de Rofi */
+    background-color:            transparent;
+    text-color:                  @fg0;
+    margin:                      0px;
+    padding:                     0px;
+    spacing:                     0px;
+}
+
+window {
+    location:                    center;
+    anchor:                      center;
+    width:                       600px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    border:                      2px solid;
+    border-color:                @accent;
+    border-radius:               12px;
+    background-color:            @bg0;
+    cursor:                      "default";
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     12px;
+    padding:                     20px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     10px 14px;
+    border-radius:               8px;
+    background-color:            @bg1;
+    text-color:                  @fg0;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @accent;
+    font:                        "Bold 10";
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @fg1;
+    cursor:                      text;
+    placeholder:                 "Buscar...";
+    placeholder-color:           @fg-alt;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     4px;
+    background-color:            transparent;
+    text-color:                  @fg0;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     8px 12px;
+    border-radius:               6px;
+    background-color:            transparent;
+    text-color:                  @fg0;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @fg0;
+}
+
+element selected.normal {
+    background-color:            @select;
+    text-color:                  #F8F8F2;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        24px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}

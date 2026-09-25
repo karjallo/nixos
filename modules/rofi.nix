@@ -1,11 +1,16 @@
-{ inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+    dotfiles = "${config.home.homeDirectory}/.config/nixos/dotfiles";
+in
 {
 	programs.rofi = {
 		enable = true;
-		package = pkgs.rofi-wayland;
 		plugins = with pkgs; [
-			(rofi-calc.override { rofi-unwrapped = rofi-wayland-unwrapped; })
+            rofi-calc
 		];
 	};
+
+    xdg.configFile."rofi".source =
+        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/rofi";
 }
